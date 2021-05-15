@@ -11,48 +11,48 @@ function TodoForm(props) {
   };
 
   const updateDefaultCategory = () => {
-    if(!props.edit && props.categories.length){
+    if (!props.edit && props.categories.length) {
       setValues({
         name: "",
-        category: props.categories[0].name
-      })
+        category: props.categories[0]._id,
+      });
     }
-  }
+  };
 
   useEffect(() => {
-    updateDefaultCategory()
-  }, [props.categories])
+    updateDefaultCategory();
+  }, [props.categories]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(values.name){
+    if (values.name) {
       props.onSubmit({
         name: values.name,
         category_id: values.category,
         completed: false,
       });
       updateDefaultCategory();
+    } else {
+      alert("Your input field is empty please write something");
     }
-    else{
-      alert("Name is missing. Please fill the name and try again");
-    }
-
-   
   };
 
-  const handleUpdate= (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    props.handleUpdate({
-      name: values.name,
-      category_id: values.category
-    });
-    setValues({
-      name: "",
-      category: "",
-    });
-  }
+    if (values.name) {
+      props.handleUpdate({
+        name: values.name,
+        category_id: values.category,
+      });
+      setValues({
+        name: "",
+        category: "",
+      });
+    } else {
+      alert("Your input field is empty please write something");
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="todo-form">
@@ -73,9 +73,8 @@ function TodoForm(props) {
             onChange={handleChange}
           >
             {props.categories.map((item, key) => {
-              
               return (
-                <option key={key} value={item.name}>
+                <option key={key} value={item._id}>
                   {item.name}
                 </option>
               );
@@ -103,9 +102,8 @@ function TodoForm(props) {
             onChange={handleChange}
           >
             {props.categories.map((item, key) => {
-              
               return (
-                <option key={key} value={item.name}>
+                <option key={key} value={item._id}>
                   {item.name}
                 </option>
               );

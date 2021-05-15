@@ -13,7 +13,9 @@ export const setLoading = (data) => ({
 export const getTodo = () => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const results = await Axios.get(`${process.env.REACT_APP_API_URL}/todo/getTodo`);
+    const results = await Axios.get(
+      `${process.env.REACT_APP_API_URL}/todo/getTodo`
+    );
     dispatch(setTodoList(results.data));
     if (results) {
       dispatch(setLoading(false));

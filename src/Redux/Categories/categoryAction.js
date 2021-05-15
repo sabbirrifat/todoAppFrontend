@@ -1,7 +1,6 @@
 import { setLoading, getTodo } from "../Todo/todoAction";
 import Axios from "axios";
 
-
 export const setCategories = (data) => ({
   type: "SET_CATEGORIES",
   payload: data,
@@ -49,7 +48,7 @@ export const deleteCategory = (data) => async (dispatch) => {
     );
     dispatch(setCategories(results.data));
     if (results) {
-      dispatch(getTodo())
+      dispatch(getTodo());
       dispatch(setLoading(false));
     }
   } catch (err) {

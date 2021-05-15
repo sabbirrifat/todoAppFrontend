@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import CategoryForm from "./CategoryForm";
-import { addCategory, deleteCategory, updateCategory } from "../Redux/Categories/categoryAction";
+import { addCategory, deleteCategory, updateCategory } from "../../Redux/Categories/categoryAction";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 

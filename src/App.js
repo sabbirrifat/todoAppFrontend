@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route, Switch, useHistory } from "react-router-dom";
-import TodoList from "./components/TodoList";
-import Categories from "./components/Categories";
+import TodoList from "./components/Todo/TodoList";
+import Categories from "./components/Category/Categories";
 import { connect } from "react-redux";
 import { getTodo } from "./Redux/Todo/todoAction";
 import { getCategories } from "./Redux/Categories/categoryAction";

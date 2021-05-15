@@ -8,15 +8,23 @@ const CategoryForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addCategory({ name: input });
-    setInput("");
+    if (input) {
+      props.addCategory({ name: input });
+      setInput("");
+    } else {
+      alert("Your input field is empty please write something");
+    }
   };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    let data = {name: input};
-    props.updateCategory(props.edit._id, data);
-    props.updateEdit({});
+    if (input) {
+      let data = { name: input };
+      props.updateCategory(props.edit._id, data);
+      props.updateEdit({});
+    } else {
+      alert("Your input field is empty please write something");
+    }
   };
 
   return (
